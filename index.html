@@ -2,98 +2,79 @@
 <html>
 <head>
   <title>For Aradhya ❤️</title>
-  <meta charset="UTF-8">
-
   <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      background: linear-gradient(135deg, #ff5f6d, #ffc371);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: Arial;
-      overflow: hidden;
-      color: white;
-      text-align: center;
+    body{
+      margin:0;
+      background:#0b0b0b;
+      color:white;
+      font-family:Arial;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+      text-align:center;
     }
 
-    .box {
-      background: rgba(0,0,0,0.4);
-      padding: 30px;
-      border-radius: 20px;
-      max-width: 350px;
-      animation: fade 2s ease;
+    #start{
+      cursor:pointer;
     }
 
-    h1 {
-      font-size: 2.5em;
+    #content{
+      display:none;
+      flex-direction:column;
+      align-items:center;
+      gap:15px;
     }
 
-    p {
-      font-size: 1.2em;
+    video{
+      width:90%;
+      max-width:400px;
+      border-radius:20px;
+      box-shadow:0 0 25px pink;
     }
 
-    button {
-      background: #ff3366;
-      color: white;
-      border: none;
-      padding: 12px 25px;
-      border-radius: 25px;
-      font-size: 1em;
-      cursor: pointer;
-    }
-
-    .heart {
-      position: absolute;
-      font-size: 22px;
-      animation: float 6s linear infinite;
-    }
-
-    @keyframes float {
-      from { transform: translateY(100vh); }
-      to { transform: translateY(-10vh); }
-    }
-
-    @keyframes fade {
-      from { opacity: 0; transform: scale(0.8); }
-      to { opacity: 1; transform: scale(1); }
+    .note{
+      max-width:400px;
+      background:#1a1a1a;
+      padding:15px;
+      border-radius:15px;
+      box-shadow:0 0 15px hotpink;
+      font-size:16px;
     }
   </style>
 </head>
 
-<body>
+<body onclick="startSurprise()">
 
-  <!-- 🎵 Music -->
-  <audio autoplay loop>
-    <source src="song.mp3" type="audio/mpeg">
-  </audio>
+<div id="start">
+  <h1>Tap anywhere 💖</h1>
+  <p>A small surprise is waiting…</p>
+</div>
 
-  <div class="box">
-    <h1>❤️ Aradhya ❤️</h1>
-    <p>
-      You are the reason my heart smiles 😊<br>
-      I like you more than words can say.
-    </p>
-    <p>
-      Will you be mine? 💍
-    </p>
-    <button onclick="alert('I love you Aradhya ❤️')">
-      Click Me 💖
-    </button>
+<div id="content">
+  <video id="vid">
+    <source src="proposal.mp4" type="video/mp4">
+  </video>
+
+  <div class="note">
+    Aradhya ❤️<br><br>
+    From the moment I met you,  
+    my heart chose you.  
+    <br><br>
+    Will you be mine? 💍
   </div>
+</div>
 
-  <script>
-    function heart() {
-      let h = document.createElement("div");
-      h.className = "heart";
-      h.innerHTML = "❤️";
-      h.style.left = Math.random() * 100 + "vw";
-      document.body.appendChild(h);
-      setTimeout(() => h.remove(), 6000);
-    }
-    setInterval(heart, 300);
-  </script>
+<script>
+function startSurprise(){
+  document.getElementById("start").style.display="none";
+  document.getElementById("content").style.display="flex";
+  const v = document.getElementById("vid");
+  v.muted = false;
+  v.play();
+  document.body.onclick = null; // prevent repeat
+}
+</script>
 
 </body>
 </html>
